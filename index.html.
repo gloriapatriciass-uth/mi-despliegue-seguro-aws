@@ -19,13 +19,3 @@
 </html>
 
 
-
-
-http://gpss-con-seguridad-web.s3-website-us-east-1.amazonaws.com
-
-
-
-
-ARN
-
-arn:aws:iam::904233099245:role/GitHubActions-S3-Role
