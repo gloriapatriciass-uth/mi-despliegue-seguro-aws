@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seguridad en la Nube</title>
+    <style>
+        body { background-color: #0a0e2a; color: #00ffcc; font-family: 'Courier New', monospace; text-align: center; padding-top: 50px; }
+        h1 { text-shadow: 0 0 10px #00ffcc; }
+    </style>
+</head>
+<body>
+    <h1>🛡️ Despliegue Automatizado Exitoso 🛡️</h1>
+    <p>Ingeniería en Redes Inteligentes y Ciberseguridad</p>
+    <p>Este sitio fue desplegado desde GitHub Actions usando OIDC.</p>
+    <p><small>🌐 <span id="datetime"></span></small></p>
+    <script>
+        document.getElementById('datetime').innerHTML = new Date().toLocaleString();
+    </script>
+</body>
+</html>
+
+
+
+
+http://gpss-con-seguridad-web.s3-website-us-east-1.amazonaws.com
+
+
+
+
+ARN
+
+arn:aws:iam::904233099245:role/GitHubActions-S3-Role

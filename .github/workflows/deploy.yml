@@ -1,0 +1,32 @@
+name: Desplegar Sitio Web a AWS S3
+
+on:
+  push:
+    branches: [ "main" ]  # Se ejecuta cuando hay un push a la rama main
+
+# Permisos necesarios para que GitHub Actions genere un token JWT y lo intercambie por credenciales de AWS
+permissions:
+  id-token: write   # Necesario para OIDC
+  contents: read    # Necesario para leer el código del repositorio
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar credenciales de AWS con OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # Paso opcional para verificar que la autenticación funcionó
+      - name: Verificar identidad en AWS
+        run: aws sts get-caller-identity
+
+      - name: Sincronizar archivos con el bucket S3
+        run: |
+          aws s3 sync . s3://gpss-con-seguridad-web/ --delete --exclude ".git/*" --exclude ".github/*"
+        # --delete elimina archivos en S3 que ya no están en el repo
