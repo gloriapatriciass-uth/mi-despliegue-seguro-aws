@@ -28,5 +28,5 @@ jobs:
 
       - name: Sincronizar archivos con el bucket S3
         run: |
-          aws s3 sync . s3://gpss-con-seguridad-web/ --delete --exclude ".git/*" --exclude ".github/*"
+          aws s3 sync . s3://gpss-con-seguridad-web/ --delete
         # --delete elimina archivos en S3 que ya no están en el repo
